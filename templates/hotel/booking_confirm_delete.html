@@ -1,0 +1,16 @@
+{% extends 'hotel/index.html' %}
+{% block content %}
+    <div class="card p-2 mt-4 text-center">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Delete Booking</legend>
+                <h3>Are you sure you want to delete this booking?</h3>
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-danger" type="submit">Yes, Delete</button>
+                <a class="btn btn-outline-secondary ml-4" href="{% url 'list-booking' object.booked_by_user.username %}">Cancel</a>
+            </div>
+        </form>
+    </div>
+{% endblock content%}

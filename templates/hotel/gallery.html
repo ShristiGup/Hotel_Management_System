@@ -1,0 +1,13 @@
+{% extends 'hotel/index.html' %}
+{% block content %}
+    <h1 class="text-center mb-4">Gallery</h1>
+    <div class="row" style="margin:0 auto;">
+    {% for i in room %}
+        <div class="col-md-4 mb-4 zoom">
+            <div class="media">
+                <img src="{{ i.image.url }}" class="mx-3" alt="fac_img" style="width: 320px;height: 250px;">
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock content %}

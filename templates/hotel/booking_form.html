@@ -1,0 +1,24 @@
+{% extends 'hotel/index.html' %}
+{% load crispy_forms_tags %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{% block extrahead %}   
+   {{ form.media }}        
+{% endblock %} 
+
+{% block forms %}
+    <h2 class="text-center mt-2">Book Your Room</h2>
+    <div class="card py-2 px-4 mb-4">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom pb-2">Fill In Your Details</legend>
+                {% bootstrap_form form %}
+            </fieldset>
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-outline-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+{% endblock forms %}

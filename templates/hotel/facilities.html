@@ -1,0 +1,17 @@
+{% extends 'hotel/index.html' %}
+{% block content %}
+    <h1 class="text-center">Facilities</h1>
+    <div class="row" style="margin:0 auto;">
+    {% for i in facility %}
+    <div class="col-md-6 my-4">
+        <div class="media">
+            <img src="{{ i.image.url }}" class="mx-3" alt="fac_img" style="width: 200px;height: 150px;">
+            <div class="media-body">
+            <h5 class="mt-0">{{ i.name }}</h5>
+            {{ i.desc }}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+{% endblock content %}

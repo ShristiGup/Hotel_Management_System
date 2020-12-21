@@ -1,0 +1,17 @@
+{% extends 'hotel/index.html' %}
+{% block content %}
+    <h2 class="text-center my-4">Our Services</h2>
+    <div class="row row-cols-1 row-cols-md-4" style="margin:0 auto;">
+    {% for i in facility %}
+        <div class="col mb-3">
+            <div class="card h-100 text-center" style="width: 15rem;">
+            <img src="{{ i.image.url }}" class="card-img-top" alt="fac_img" style="width: 100%; height: 180px;">
+            <div class="card-body">
+                <h5 class="card-title">{{ i.name }}</h5>
+                <p class="card-text">{{ i.desc }}</p>
+            </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock content %}

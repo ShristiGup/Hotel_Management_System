@@ -1,0 +1,89 @@
+{% extends 'hotel/index.html' %}
+{% load static %}
+{% block content %}
+    <h1 class="text-center">Booking Detail</h1>
+    <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+           <td colspan="4" class="text-center">Booking Number: {{ object.booking_no }}</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="4">Booking Detail:</td>
+          </tr>
+          <tr>
+            <td>Customer Name:</td>
+            <td>{{ object.name }}</td>
+            <td>Mobile Number:</td>
+            <td>{{ object.mobile_no }}</td>
+          </tr>
+          <tr>
+            <td>Gender:</td>
+            <td>{{ object.gender }}</td>
+            <td>ID Type:</td>
+            <td>{{ object.id_type }}</td>
+          </tr>
+          <tr>
+            <td>Address:</td>
+            <td colspan="3">{{ object.address }}</td>
+          </tr>
+          <tr>
+            <td>Checkin Date:</td>
+            <td>{{ object.checkin_date }}</td>
+            <td>Checkout Date:</td>
+            <td>{{ object.checkout_date }}</td>
+          </tr>
+          <tr>
+            <td colspan="4">Room Detail:</td>
+          </tr>
+          <tr>
+            <td>Room Type:</td>
+            <td>{{ object.roomid.roomtype }}</td>
+            <td>Room Price(per day):</td>
+            <td>{{ object.roomid.roomtype.price }}</td>
+          </tr>
+          <tr>
+            <td>Room Name:</td>
+            <td>{{ object.roomid.roomname }}</td>
+            <td>Room Description:</td>
+            <td>{{ object.roomid.roomdesc }}</td>
+          </tr>
+          <tr>
+            <td>Max Adult:</td>
+            <td>{{ object.roomid.maxadult }}</td>
+            <td>Max Child:</td>
+            <td>{{ object.roomid.maxchild }}</td>
+          </tr>
+          <tr>
+            <td>No. of Beds:</td>
+            <td>{{ object.roomid.no_of_bed }}</td>
+            <td>Room Image:</td>
+            <td><img src="{{object.roomid.image.url}} " style="height: 200px;width: 300px;"></td>
+          </tr>
+          <tr>
+            <td>Room Facility:</td>
+            <td>
+              {% for i in object.roomid.roomfacility.values %}
+                  {% if forloop.counter ==  object.roomid.roomfacility.values.count %}
+                      <span>{{ i.name }}</span>
+                  {% else %}
+                      <span>{{ i.name }},</span>
+                  {% endif %}
+              {% endfor %}
+              </td>
+            <td>Booking Date:</td>
+            <td>{{ object.booking_date }}</td>
+          </tr>
+          <tr>
+              <td colspan="4">Admin Remarks:</td>
+          </tr>
+          <tr>
+              <td>Admin's Message</td>
+              <td>{{ object.remark }}</td>
+              <td>Order Final Status:</td>
+              <td>{{ object.status }}</td>
+          </tr>
+        </tbody>
+      </table>
+{% endblock content %}

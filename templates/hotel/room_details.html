@@ -1,0 +1,30 @@
+{% extends 'hotel/index.html' %}
+{% block content %}
+    <h1 class="text-center mb-4">Room Details</h1>
+    <div style="display: flex;">
+        <div class="item">
+            <img src="{{ room.image.url }}" alt="room_img" style="width: 500px;height:400px;margin:0px 20px">
+        </div>
+        <div class="item">
+            <h3>{{ room.roomname }}</h3>
+            <p>{{ room.roomdesc }}</p>
+            <p>Max Adult: {{ room.maxadult }}</p>
+            <p>Max Child: {{ room.maxchild }}</p>
+            <p>No. of Beds: {{ room.no_of_bed }}</p>
+            <p>Room Facilties:
+            {% for i in room.roomfacility.values %}
+                {% if forloop.counter ==  room.roomfacility.values.count %}
+                    <span>{{ i.name }}</span>
+                {% else %}
+                    <span>{{ i.name }},</span>
+                {% endif %}
+            {% endfor %}
+            </p>
+            <p>Price: {{ room.roomtype.price }}</p>
+            <div class="d-flex justify-content-center">
+                <a class="btn btn-success" href="{% url 'create-booking' room.id %}">Book</a>
+            </div>
+        </div>
+        
+    </div>
+{% endblock content %}

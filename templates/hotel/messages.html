@@ -1,0 +1,44 @@
+{% extends 'hotel/index.html' %}
+{% block content %}
+    <h1 class="text-center mb-4">Messages Section</h1>
+    {% if not enquiries %}
+    <div class="card mb-4">
+        <div class="card-body">
+        <h5 class="card-title">You have not asked any questions yet!</h5>
+        </div>
+    </div>
+    {% endif %}
+    {% for enquiry in enquiries %}
+        <div class="card mb-4">
+            <div class="card-header">
+            {{ enquiry.query_msg }}
+            <span class="float-right">Asked by: {{ enquiry.name }}</span>
+            </div>
+            <div class="card-body">
+            <h5 class="card-title">{{ enquiry.query_response }}</h5>
+            <span class="float-right">Answered by: Admin</span>
+            </div>
+        </div>
+    {% endfor %}
+      <div class="text-center">
+      {% if is_paginated %}
+        {% if page_obj.has_previous %}
+          <a href="?page=1" class="btn btn-outline-info">First</a>
+          <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-outline-info">Previous</a>
+        {% endif %}
+
+        {% for num in page_obj.paginator.page_range %}
+          {% if num == page_obj.number %}
+            <a href="?page={{ page_obj.number }}" class="btn btn-info">{{ num }}</a>
+          {% elif num > page_obj.number|add:"-3" and num < page_obj.number|add:"3" %}
+            <a href="?page={{ num }}" class="btn btn-outline-info">{{ num }}</a>
+          {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+          <a href="?page={{ page_obj.next_page_number }}" class="btn btn-outline-info">Next</a>
+          <a href="?page={{ page_obj.paginator.num_pages }}" class="btn btn-outline-info">Last</a>
+        {% endif %}
+      {% endif %}
+    </div>
+{% endblock content %}
