@@ -1,0 +1,25 @@
+{% extends 'hotel/index.html' %}
+{% load crispy_forms_tags %}
+{% block forms %}
+    <h2 class="text-center mt-2">Your Profile</h2>
+    <div class="card pt-4 px-4 bg-light mb-4">
+        <div class="media">
+        <img class="rounded-circle" style="border: 3px solid black;" src="{{ user.profile.image.url }}" height="125" width="125">
+        <div class="media-body">
+            <h2 class="account-heading ml-3">{{ user.username }}</h2>
+            <p class="text-secondary ml-3">{{ user.email }}</p>
+        </div>
+        </div>
+        <form method="POST" enctype="multipart/form-data" class="pt-1 border-top mt-2">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend>Wanna update your info? Just Type Here...</legend>
+                {{ u_form|crispy }}
+                {{ p_form|crispy }}
+            </fieldset>
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-outline-success">Update</button>
+            </div>
+        </form>
+    </div>
+{% endblock forms %}

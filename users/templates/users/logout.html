@@ -1,0 +1,8 @@
+{% extends 'hotel/index.html' %}
+{% load crispy_forms_tags %}
+{% block forms %}
+    <h2 class="text-center mt-2">You Have Been Logged Out...</h2>
+        <div class="border-top pt-2">
+            <a href="{% url 'login' %}">Log In again...</a>
+        </div>
+{% endblock forms %}

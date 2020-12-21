@@ -1,0 +1,21 @@
+{% extends 'hotel/index.html' %}
+{% load crispy_forms_tags %}
+{% block forms %}
+    <h2 class="text-center mt-2">Register With Us</h2>
+    <div class="card py-2 px-4 mb-2">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom pb-2">Fill In Your Details</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-outline-primary">Sign Up</button>
+            </div>
+        </form>
+        <div class="border-top pt-2">
+            <small>Already Have an Account?</small>
+            <a href="{% url 'login' %}" class="ml-2 btn btn-sm btn-outline-secondary">Sign In</a>
+        </div>
+    </div>
+{% endblock forms %}
